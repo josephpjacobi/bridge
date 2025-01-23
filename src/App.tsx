@@ -4,7 +4,7 @@ import { CustomerList } from './Customers/CustomerList';
 function App() {
   return (
     <div className="App">
-      <CustomerList />
+      <CustomerList marinaId={1} />
     </div>
   );
 }

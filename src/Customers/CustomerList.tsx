@@ -1,59 +1,33 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
+import { useState } from 'react';
+import { marinaCustomers, owners } from '../data';
 
-export const CustomerList = () => {
-  // fetch all customers
+interface CustomerListProps {
+  marinaId: number;
+}
 
-  // convert to correct format
+export const CustomerList = ({ marinaId }: CustomerListProps) => {
+  const getCustomersByMarinaId = () => {
+    const marinaCustomerIds = marinaCustomers
+      .filter((customer) => customer.marinaId === marinaId)
+      .map((marinaCustomer) => marinaCustomer.id);
 
-  // pass to DataGrid
+    return owners.filter((owner) =>
+      marinaCustomerIds.includes(owner.id)
+    );
+  };
+
+  const [customers, setCustomers] = useState(
+    getCustomersByMarinaId()
+  );
 
   // need contact info
-  const rows: GridRowsProp = [
-    {
-      id: 1,
-      firstName: 'Joe',
-      lastName: 'Jacobi',
-      address: '20 Pine Lane',
-      city: 'Bayville',
-      state: 'NY',
-      zipCode: '11709',
-      vessel: 'link',
-      profileLink: 'profile link',
-    },
-    {
-      id: 2,
-      firstName: 'Julia',
-      lastName: 'Riva',
-      address: '20 Pine Lane',
-      city: 'Bayville',
-      state: 'NY',
-      zipCode: '11709',
-      vessel: 'link',
-      profileLink: 'profile link',
-    },
-    {
-      id: 3,
-      firstName: 'Derek',
-      lastName: 'Jacobi',
-      address: 'address1',
-      city: 'Northport',
-      state: 'NY',
-      zipCode: '12345',
-      vessel: 'link',
-      profileLink: 'profile link',
-    },
-    {
-      id: 4,
-      firstName: 'Gab',
-      lastName: 'Femia',
-      address: 'address1',
-      city: 'Northport',
-      state: 'NY',
-      zipCode: '12345',
-      vessel: 'link',
-      profileLink: 'profile link',
-    },
-  ];
+  const rows: GridRowsProp = customers.map((customer, index) => {
+    return {
+      ...customer,
+      id: index++,
+    };
+  });
 
   // Define columns for customer list
   const columns: GridColDef[] = [
@@ -63,8 +37,8 @@ export const CustomerList = () => {
     { field: 'city', headerName: 'City', width: 150 },
     { field: 'state', headerName: 'State', width: 150 },
     { field: 'zipCode', headerName: 'Zip code', width: 150 },
-    { field: 'vessel', headerName: 'Vessel', width: 150 },
-    { field: 'profileLink', headerName: 'Profile', width: 150 },
+    { field: 'email', headerName: 'Email', width: 150 },
+    { field: 'phone', headerName: 'Phone', width: 150 },
   ];
 
   return (
