@@ -1,10 +1,10 @@
 import './App.css';
-import { WinterStorageContract } from './WinterStorageContract/WinterStorageContract';
+import { CustomerList } from './Customers/CustomerList';
 
 function App() {
   return (
     <div className="App">
-      <WinterStorageContract />
+      <CustomerList />
     </div>
   );
 }

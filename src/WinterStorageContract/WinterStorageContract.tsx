@@ -1,8 +1,10 @@
 // import { LeaseHolderForm } from '../LeaseHolderForm/LeaseHolderForm';
 // import { VesselInformationForm } from '../VesselInformationForm/VesselInformationForm';
 // import { InsuranceInformationForm } from '../InsuranceInformationForm/InsuranceInformationForm';
-import { OffseasonWorkForm } from '../OffseasonWorkForm/OffseasonWorkForm';
-import { checklistItemConfigs } from '../OffseasonWorkForm/data';
+
+import { checklistItemConfigs } from './Subforms/OffseasonWorkForm/data';
+import { OffseasonWorkForm } from './Subforms/OffseasonWorkForm/OffseasonWorkForm';
+
 // import { HaulAndSplashDateForm } from '../HaulSplashForm/HaulSplashForm';
 // import { CommentsAndOtherWork } from '../CommentsAndOtherWork/CommentsAndOtherWork';
 // import { FormSummary } from '../FormSummary/FormSummay';
