@@ -10,6 +10,14 @@ import { getAllWorkOrdersByInventoryId } from '../api/workOrders';
 import { InvoiceList } from '../Invoices/InvoiceList';
 import { getInvoicesByMarinaCustomerId } from '../api/invoices';
 
+/*
+ * CustomerProfile is an overview page for an individual customer. In this component, you will find
+ *  customer information such as name, address, contact information, and vessels, contracts, work orders
+ *  and invoices associated with that customer.
+ *
+ * I think the only prop needed is a marinaCustomer instance. It has data that links to the marina,
+ * vessel and owner info
+ **/
 export const CustomerProfile = ({
   marinaCustomer,
   marinaId,

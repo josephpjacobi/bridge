@@ -3,6 +3,9 @@ import { getCustomersByMarinaId } from '../api/customers';
 import { CustomerProfile } from './CustomerProfile';
 import { Customer, CustomerListProps } from './types';
 
+/*
+ *  CustomerList is used to display a list of customers given a marinaId
+ **/
 export const CustomerList = ({ marinaId }: CustomerListProps) => {
   const customers: Customer[] = getCustomersByMarinaId(marinaId);
 
@@ -25,8 +28,8 @@ export const CustomerList = ({ marinaId }: CustomerListProps) => {
       <h1>Customer List</h1>
       <DataGrid rows={rows} columns={columns} />
       <CustomerProfile
-        marinaCustomer={customers[0]}
         marinaId={marinaId}
+        marinaCustomer={customers[0]}
       />
     </div>
   );

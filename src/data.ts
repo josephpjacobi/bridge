@@ -35,31 +35,31 @@ export const marinaCustomers = [
   {
     id: 1,
     marinaId: 1,
-    ownerId: 1,
+    customerId: 1,
     inventoryId: 1,
   },
   {
     id: 1,
     marinaId: 1,
-    ownerId: 1,
+    customerId: 1,
     inventoryId: 1,
   },
   {
     id: 2,
     marinaId: 1,
-    ownerId: 2,
+    customerId: 2,
     inventoryId: 2,
   },
   {
     id: 3,
     marinaId: 1,
-    ownerId: 3,
+    customerId: 3,
     inventoryId: 3,
   },
   {
     id: 4,
     marinaId: 1,
-    ownerId: 4,
+    customerId: 4,
     inventoryId: 4,
   },
 ];

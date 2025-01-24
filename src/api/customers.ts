@@ -4,13 +4,20 @@ import { marinaCustomers, customers } from '../data';
 // Store API requests for customer data
 
 // Customers
+export const getAllMarinaCustomersByMarinaId = (
+  marinaId: number // Move this to new file
+) =>
+  marinaCustomers.filter(
+    (marinaCustomer) => marinaCustomer.marinaId === marinaId
+  );
+
 export const getCustomersByMarinaId = (marinaId: number) => {
-  const marinaCustomerIds = marinaCustomers
+  const customerIds = marinaCustomers
     .filter((customer) => customer.marinaId === marinaId)
-    .map((marinaCustomer) => marinaCustomer.id);
+    .map((marinaCustomer) => marinaCustomer.customerId);
 
   return customers.filter((customer) =>
-    marinaCustomerIds.includes(customer.id)
+    customerIds.includes(customer.id)
   );
 };
 
