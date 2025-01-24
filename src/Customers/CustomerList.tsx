@@ -1,31 +1,21 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { useState } from 'react';
-import { marinaCustomers, owners } from '../data';
+import { getCustomersByMarinaId } from '../api/customers';
+import { CustomerProfile } from './CustomerProfile';
 
 interface CustomerListProps {
   marinaId: number;
 }
 
 export const CustomerList = ({ marinaId }: CustomerListProps) => {
-  const getCustomersByMarinaId = () => {
-    const marinaCustomerIds = marinaCustomers
-      .filter((customer) => customer.marinaId === marinaId)
-      .map((marinaCustomer) => marinaCustomer.id);
-
-    return owners.filter((owner) =>
-      marinaCustomerIds.includes(owner.id)
-    );
-  };
-
   const [customers, setCustomers] = useState(
-    getCustomersByMarinaId()
+    getCustomersByMarinaId(marinaId)
   );
 
-  // need contact info
   const rows: GridRowsProp = customers.map((customer, index) => {
     return {
       ...customer,
-      id: index++,
+      id: index++, // ensures id starts at 1, this might not matter but it will always be unique
     };
   });
 
@@ -45,6 +35,7 @@ export const CustomerList = ({ marinaId }: CustomerListProps) => {
     <div>
       <h1>Customer List</h1>
       <DataGrid rows={rows} columns={columns} />
+      <CustomerProfile marinaCustomerId={3} />
     </div>
   );
 };

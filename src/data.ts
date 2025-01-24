@@ -128,6 +128,8 @@ export const owners = [
     zipCode: '11709',
     email: 'joe@buoy.com',
     phone: '5163184957',
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 2,
@@ -139,6 +141,8 @@ export const owners = [
     zipCode: '11709',
     email: 'julia@buoy.com',
     phone: '5163059977',
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 3,
@@ -150,6 +154,8 @@ export const owners = [
     zipCode: '12345',
     email: 'derek@buoy.com',
     phone: '5168573729',
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 4,
@@ -161,6 +167,8 @@ export const owners = [
     zipCode: '12345',
     email: 'gab@buoy.com',
     phone: '5165556789',
+    updatedAt: '',
+    createdAt: '',
   },
 ];
 
