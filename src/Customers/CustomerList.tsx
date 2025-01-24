@@ -1,23 +1,12 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
-import { useState } from 'react';
 import { getCustomersByMarinaId } from '../api/customers';
 import { CustomerProfile } from './CustomerProfile';
-
-interface CustomerListProps {
-  marinaId: number;
-}
+import { Customer, CustomerListProps } from './types';
 
 export const CustomerList = ({ marinaId }: CustomerListProps) => {
-  const [customers, setCustomers] = useState(
-    getCustomersByMarinaId(marinaId)
-  );
+  const customers: Customer[] = getCustomersByMarinaId(marinaId);
 
-  const rows: GridRowsProp = customers.map((customer, index) => {
-    return {
-      ...customer,
-      id: index++, // ensures id starts at 1, this might not matter but it will always be unique
-    };
-  });
+  const rows: GridRowsProp = customers;
 
   // Define columns for customer list
   const columns: GridColDef[] = [
@@ -35,7 +24,10 @@ export const CustomerList = ({ marinaId }: CustomerListProps) => {
     <div>
       <h1>Customer List</h1>
       <DataGrid rows={rows} columns={columns} />
-      <CustomerProfile marinaCustomerId={3} />
+      <CustomerProfile
+        marinaCustomer={customers[0]}
+        marinaId={marinaId}
+      />
     </div>
   );
 };
