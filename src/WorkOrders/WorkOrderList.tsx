@@ -1,25 +1,29 @@
 import { Stack } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-export interface ContractTableProps {
+export interface WorkOrderListProps {
   rowData: any;
 }
 
-export const ContractList = ({ rowData }: ContractTableProps) => {
-  // Define columns for contract list
+export const WorkOrderList = ({ rowData }: WorkOrderListProps) => {
+  // Define columns for work orders list
   const columns: GridColDef[] = [
     { field: 'status', headerName: 'Contract Status', width: 150 },
-    { field: 'inventoryId', headerName: 'Vessel', width: 150 },
     {
-      field: 'deliveryMethod',
-      headerName: 'Delivery Method',
+      field: 'inventoryId',
+      headerName: 'Vessel ID',
+      width: 150,
+    },
+    {
+      field: 'contractId',
+      headerName: 'Contract Id',
       width: 150,
     },
   ];
 
   return (
     <Stack>
-      <h2>Contracts</h2>
+      <h2>Work Orders</h2>
       <DataGrid rows={rowData} columns={columns} />
     </Stack>
   );
