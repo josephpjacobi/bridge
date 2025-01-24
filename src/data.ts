@@ -193,6 +193,15 @@ export const contracts = [
     updatedAt: '',
     createdAt: '',
   },
+  {
+    id: 2,
+    status: 'mail',
+    marinaId: 1,
+    inventoryId: 1,
+    deliveryMethod: 'email',
+    updatedAt: '',
+    createdAt: '',
+  },
 ];
 
 export const contractItems = [

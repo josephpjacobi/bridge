@@ -8,12 +8,10 @@ export const VesselList = ({
   marinaCustomerId,
   marinaId,
 }: VesselListProps) => {
-  const vesselsCustomerOwns = getVesselsByMarinaCustomerId(
+  const rows: GridRowsProp = getVesselsByMarinaCustomerId(
     marinaId,
     marinaCustomerId
   );
-
-  const rows: GridRowsProp = vesselsCustomerOwns;
 
   // Define columns for vessel list
   const columns: GridColDef[] = [

@@ -1,3 +1,4 @@
+import { Customer } from '../Customers/types';
 import { marinaInventory, vessels } from '../data';
 import { MarinaInventory } from '../MarinaInventory/types';
 import { Vessel } from '../Vessels/types';
@@ -18,6 +19,7 @@ export const getVesselsByMarinaCustomerId = (
   marinaCustomerId: MarinaInventory['marinaId']
 ) => {
   const boats = marinaInventory.filter(
+    // Need a better var name
     (inventoryRecord) =>
       inventoryRecord.marinaId === marinaId &&
       inventoryRecord.marinaCustomerId === marinaCustomerId
@@ -27,3 +29,17 @@ export const getVesselsByMarinaCustomerId = (
     return getVesselByVesselId(vesselId)[0];
   });
 };
+
+export const getAllInventoryIdsOwnedByCustomer = (
+  marinaId: number,
+  marinaCustomer: Customer
+) =>
+  marinaInventory
+    .filter(
+      (inventoryRecord) =>
+        inventoryRecord.marinaId === marinaId &&
+        inventoryRecord.marinaCustomerId === marinaCustomer.id
+    )
+    .map((record) => {
+      return record.id;
+    });
