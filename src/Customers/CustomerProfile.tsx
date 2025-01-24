@@ -7,6 +7,8 @@ import { getAllInventoryIdsOwnedByCustomer } from '../api/vessels';
 import { getContractsByInventoryId } from '../api/contracts';
 import { WorkOrderList } from '../WorkOrders/WorkOrderList';
 import { getAllWorkOrdersByInventoryId } from '../api/workOrders';
+import { InvoiceList } from '../Invoices/InvoiceList';
+import { getInvoicesByMarinaCustomerId } from '../api/invoices';
 
 export const CustomerProfile = ({
   marinaCustomer,
@@ -22,6 +24,8 @@ export const CustomerProfile = ({
     inventoryIds
   );
 
+  const invoices = getInvoicesByMarinaCustomerId(marinaCustomer.id);
+
   return (
     <Stack>
       <CustomerInfoSection marinaCustomerId={marinaCustomer.id} />
@@ -34,8 +38,7 @@ export const CustomerProfile = ({
         rowData={getContractsByInventoryId(marinaId, inventoryIds)}
       />
       <WorkOrderList rowData={workOrders} />
-      {/*
-      // <InvoiceTable /> */}
+      <InvoiceList rowData={invoices} />
     </Stack>
   );
 };
