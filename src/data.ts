@@ -39,12 +39,6 @@ export const marinaCustomers = [
     inventoryId: 1,
   },
   {
-    id: 1,
-    marinaId: 1,
-    customerId: 1,
-    inventoryId: 1,
-  },
-  {
     id: 2,
     marinaId: 1,
     customerId: 2,
@@ -70,6 +64,30 @@ export const marinaInventory = [
     marinaId: 1,
     marinaCustomerId: 1,
     vesselId: 1,
+    updatedAt: '',
+    createdAt: '',
+  },
+  {
+    id: 2,
+    marinaId: 1,
+    marinaCustomerId: 2,
+    vesselId: 2,
+    updatedAt: '',
+    createdAt: '',
+  },
+  {
+    id: 3,
+    marinaId: 1,
+    marinaCustomerId: 3,
+    vesselId: 3,
+    updatedAt: '',
+    createdAt: '',
+  },
+  {
+    id: 4,
+    marinaId: 1,
+    marinaCustomerId: 4,
+    vesselId: 4,
     updatedAt: '',
     createdAt: '',
   },
@@ -131,16 +149,6 @@ export const customers = [
 ];
 
 export const vessels = [
-  {
-    id: 1,
-    year: 2024,
-    boatName: 'Boaty',
-    length: 34,
-    make: 'EdgeWater',
-    model: '340CC',
-    updatedAt: '',
-    createdAt: '',
-  },
   {
     id: 1,
     year: 2024,
@@ -253,6 +261,7 @@ export const invoices = [
   {
     id: 1,
     status: 'Not paid',
+    marinaId: 1,
     workOrderId: 1,
     vesselId: 1,
     marinaCustomerId: 1,

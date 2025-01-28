@@ -13,7 +13,13 @@ export const getVesselByVesselId = (
     return vessel.id === vesselId;
   });
 
-// Vessel List
+// List of Vessels
+export const getAllVesselsByMarinaId = (marinaId: number) => {
+  const inventoryIds = getAllInventoryIdsByMarinaId(marinaId);
+
+  return vessels.filter((vessel) => inventoryIds.includes(vessel.id));
+};
+
 export const getVesselsByMarinaCustomerId = (
   marinaId: MarinaInventory['marinaId'],
   marinaCustomerId: MarinaInventory['marinaId']
@@ -29,6 +35,15 @@ export const getVesselsByMarinaCustomerId = (
     return getVesselByVesselId(vesselId)[0];
   });
 };
+
+export const getAllInventoryIdsByMarinaId = (marinaId: number) =>
+  marinaInventory
+    .filter(
+      (inventoryRecord) => inventoryRecord.marinaId === marinaId
+    )
+    .map((record) => {
+      return record.id;
+    });
 
 export const getAllInventoryIdsOwnedByCustomer = (
   marinaId: number,

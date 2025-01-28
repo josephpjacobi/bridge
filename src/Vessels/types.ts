@@ -1,8 +1,5 @@
-import { MarinaCustomer } from '../Customers/types';
-
 export interface VesselListProps {
-  marinaId: number; // Marina['id]
-  marinaCustomerId: MarinaCustomer['id'];
+  rowData: Vessel[];
 }
 
 export interface Vessel {

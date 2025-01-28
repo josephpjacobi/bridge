@@ -1,18 +1,9 @@
 import { Stack } from '@mui/material';
-import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
-import { getVesselsByMarinaCustomerId } from '../api/vessels';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { VesselListProps } from './types';
 
 /* Extract this out, VesselList should take a list of Vessels and strictly be presentational */
-export const VesselList = ({
-  marinaCustomerId,
-  marinaId,
-}: VesselListProps) => {
-  const rows: GridRowsProp = getVesselsByMarinaCustomerId(
-    marinaId,
-    marinaCustomerId
-  );
-
+export const VesselList = ({ rowData }: VesselListProps) => {
   // Define columns for vessel list
   const columns: GridColDef[] = [
     { field: 'boatName', headerName: 'Boat name', width: 150 },
@@ -24,7 +15,7 @@ export const VesselList = ({
   return (
     <Stack>
       <h1>Vessels</h1>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={rowData} columns={columns} />
     </Stack>
   );
 };
