@@ -1,6 +1,5 @@
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import { getCustomersByMarinaId } from '../api/customers';
-import { CustomerProfile } from './CustomerProfile';
 import { Customer, CustomerListProps } from './types';
 
 /*
@@ -27,10 +26,6 @@ export const CustomerList = ({ marinaId }: CustomerListProps) => {
     <div>
       <h1>Customer List</h1>
       <DataGrid rows={rows} columns={columns} />
-      <CustomerProfile
-        marinaId={marinaId}
-        marinaCustomer={customers[0]}
-      />
     </div>
   );
 };
