@@ -6,8 +6,9 @@ import { customers } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
 import { Invoices } from './Invoices/Invoices';
+import { ContractDetails } from './Contracts/ContractDetails';
 
-// IMPLEMENT A Contract DETAILS PAGE
+// ADD contract info, contact info, vessel info to Contract details
 
 // IMPLEMENT AN work order DETAILS PAGE
 
@@ -41,6 +42,10 @@ function App() {
         <Route
           path="/contracts"
           element={<Contracts marinaId={1} />}
+        />
+        <Route
+          path="/contract"
+          element={<ContractDetails contractId={1} />}
         />
         <Route path="/invoices" element={<Invoices marinaId={1} />} />
       </Routes>

@@ -1,3 +1,9 @@
+import {
+  Contract,
+  ContractItem,
+  ContractItemType,
+} from './Contracts/types';
+
 export const marinas = [
   {
     id: 1,
@@ -191,7 +197,7 @@ export const vessels = [
   },
 ];
 
-export const contracts = [
+export const contracts: Contract[] = [
   {
     id: 1,
     status: 'complete',
@@ -203,15 +209,17 @@ export const contracts = [
   },
 ];
 
-export const contractItems = [
+export const contractItems: ContractItem[] = [
   {
     id: 1,
     contractId: 1,
     itemTypeId: 1,
+    updatedAt: '',
+    createdAt: '',
   },
 ];
 
-export const contractItemType = [
+export const contractItemType: ContractItemType[] = [
   {
     id: 1,
     title: 'Bottom Paint',
