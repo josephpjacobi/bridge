@@ -1,13 +1,17 @@
 import { List, ListItem } from '@mui/material';
-import { Customer } from './types';
+import { MarinaCustomer } from './types';
+import { getCustomerByMarinaCustomerId } from '../api/customers';
 
 interface CustomerDetailsProps {
-  customerData: Customer;
+  marinaCustomerId: MarinaCustomer['id'];
 }
 
 export const CustomerDetails = ({
-  customerData,
+  marinaCustomerId,
 }: CustomerDetailsProps) => {
+  const customerData =
+    getCustomerByMarinaCustomerId(marinaCustomerId)[0];
+
   const {
     firstName,
     lastName,

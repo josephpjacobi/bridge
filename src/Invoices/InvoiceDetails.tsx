@@ -1,13 +1,15 @@
 import { List, ListItem } from '@mui/material';
 import { Invoice } from './types';
+import { getInvoiceByInvoiceId } from '../api/invoices';
 
 interface InvoiceDetailsProps {
-  invoiceData: Invoice;
+  invoiceId: Invoice['id'];
 }
 
 export const InvoiceDetails = ({
-  invoiceData,
+  invoiceId,
 }: InvoiceDetailsProps) => {
+  const invoiceData = getInvoiceByInvoiceId(invoiceId)[0];
   const { createdAt, dateDue, dateSent, datePaid, status } =
     invoiceData;
 

@@ -1,13 +1,15 @@
 import { List, ListItem } from '@mui/material';
 import { Contract } from './types';
+import { getContractByContractId } from '../api/contracts';
 
 interface ContractDetailsProps {
-  contractData: Contract;
+  contractId: Contract['id'];
 }
 
 export const ContractDetails = ({
-  contractData,
+  contractId,
 }: ContractDetailsProps) => {
+  const contractData = getContractByContractId(contractId)[0];
   const { status } = contractData;
 
   return (

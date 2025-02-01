@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
 import { CustomerList } from './Customers/CustomerList';
-import { contracts, invoices, workOrders } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
 import { Invoices } from './Invoices/Invoices';
@@ -12,8 +11,6 @@ import { HomePage } from './Components/HomePage';
 import { WorkOrders } from './WorkOrders/WorkOrders';
 import { CustomerView } from './Customers/CustomerView';
 import { VesselView } from './Vessels/VesselView';
-
-// Add vessel view with customer info and current / past work
 
 // Implement Create functionality:
 //    Customer
@@ -56,12 +53,12 @@ function App() {
         />
         <Route
           path="/contract"
-          element={<ContractView contract={contracts[0]} />} // This should be contractId
+          element={<ContractView contractId={1} />} // This should come from query params
         />
         <Route path="/invoices" element={<Invoices marinaId={1} />} />
         <Route
           path="/invoice"
-          element={<InvoiceView invoice={invoices[0]} />} // This should be invoiceId
+          element={<InvoiceView invoiceId={1} />} // This should come from query params
         />
         <Route
           path="/workOrders"
@@ -69,7 +66,7 @@ function App() {
         />
         <Route
           path="/workOrder"
-          element={<WorkOrderView workOrder={workOrders[0]} />} // This should be workOrderId
+          element={<WorkOrderView workOrderId={1} />} // This should come from query params
         />
       </Routes>
     </div>

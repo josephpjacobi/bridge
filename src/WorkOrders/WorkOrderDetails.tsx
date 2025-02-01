@@ -1,13 +1,15 @@
 import { List, ListItem } from '@mui/material';
 import { WorkOrder } from './types';
+import { getWorkOrderByWorkOrderId } from '../api/workOrders';
 
 interface WorkOrderDetailsProps {
-  workOrderData: WorkOrder;
+  workOrderId: WorkOrder['id'];
 }
 
 export const WorkOrderDetails = ({
-  workOrderData,
+  workOrderId,
 }: WorkOrderDetailsProps) => {
+  const workOrderData = getWorkOrderByWorkOrderId(workOrderId)[0];
   const { status } = workOrderData;
 
   return (

@@ -4,15 +4,31 @@ import {
   ContractItemType,
 } from './Contracts/types';
 import { Invoice, LineItems } from './Invoices/types';
+import { MarinaGroup } from './MarinaGroup/types';
+import { Marina } from './Marinas/types';
 import {
   WorkOrder,
   WorkOrderItems,
   WorkOrderItemType,
 } from './WorkOrders/types';
 
-export const marinas = [
+export const marinaGroups: MarinaGroup[] = [
   {
     id: 1,
+    name: 'Bridge Marina Group',
+    address: '40 Ludlam Ave',
+    city: 'Bayville',
+    state: 'NY',
+    zipCode: 11709,
+    updatedAt: '',
+    createdAt: '',
+  },
+];
+
+export const marinas: Marina[] = [
+  {
+    id: 1,
+    marinaGroupId: 1,
     name: 'Bridge',
     address: '40 Ludlam Ave',
     city: 'Bayville',
@@ -229,7 +245,7 @@ export const contractItems: ContractItem[] = [
 export const contractItemType: ContractItemType[] = [
   {
     id: 1,
-    title: 'Bottom Paint',
+    title: 'Bottom Paint - contract item', // here for testing
     marinaId: 1,
     description:
       'Paint the bottom of your boat before it goes into the water.',
@@ -266,7 +282,7 @@ export const workItemType: WorkOrderItemType[] = [
   {
     id: 1,
     marinaId: 1,
-    title: 'Bottom Paint',
+    title: 'Bottom Paint - work item', // here for testing
     description: 'Painted the bottom of the boat',
     updatedAt: '',
     createdAt: '',
@@ -303,7 +319,7 @@ export const lineItems: LineItems[] = [
 export const lineItemType = [
   {
     id: 1,
-    title: 'Bottom Paint',
+    title: 'Bottom Paint - line item', // here for testing
     description: 'Paint the bottom of the boat',
   },
 ];

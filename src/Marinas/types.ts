@@ -1,5 +1,6 @@
 export interface Marina {
   id: number;
+  marinaGroupId?: number;
   name: string;
   address: string;
   city: string;

@@ -1,18 +1,21 @@
 import { getAllContractItemsByContractId } from '../api/contracts';
-import { getVesselByInventoryId } from '../api/vessels';
-import { contracts, invoices, workItemType } from '../data';
+import { workItemType } from '../data';
 import { VesselDetails } from '../Vessels/VesselDetails';
 import { CustomerDetails } from '../Customers/CustomerDetails';
-import { getCustomerByMarinaCustomerId } from '../api/customers';
 import { InvoiceDetails } from '../Invoices/InvoiceDetails';
 import { WorkOrder, WorkOrderItemType } from './types';
 import { ContractDetails } from '../Contracts/ContractDetails';
+import { getWorkOrderByWorkOrderId } from '../api/workOrders';
+import { getInvoiceByWorkOrderId } from '../api/invoices';
 
 interface WorkOrderViewProps {
-  workOrder: WorkOrder;
+  workOrderId: WorkOrder['id'];
 }
 
-export const WorkOrderView = ({ workOrder }: WorkOrderViewProps) => {
+export const WorkOrderView = ({
+  workOrderId,
+}: WorkOrderViewProps) => {
+  const workOrder = getWorkOrderByWorkOrderId(workOrderId)[0];
   const workOrderItems = getAllContractItemsByContractId(
     workOrder.id
   ).map((item) => {
@@ -21,12 +24,7 @@ export const WorkOrderView = ({ workOrder }: WorkOrderViewProps) => {
     )[0];
   });
 
-  const customerData = getCustomerByMarinaCustomerId(
-    workOrder.marinaCustomerId
-  )[0];
-  const vesselData = getVesselByInventoryId(workOrder.inventoryId)[0];
-  const invoiceData = invoices[0];
-  const contractData = contracts[0];
+  const invoice = getInvoiceByWorkOrderId(workOrderId)[0];
 
   return (
     <div>
@@ -56,12 +54,14 @@ export const WorkOrderView = ({ workOrder }: WorkOrderViewProps) => {
         <CustomerDetails
           // I added marinaCustomerId to the Contract type. The other option is to use the inventoryId to get the inventory record, which has marinaCustomerId
           // My thinking is the contract is tied to a specific vessel, we could use the vessel to get the customer information
-          customerData={customerData}
+          marinaCustomerId={workOrder.marinaCustomerId}
         />
-        <VesselDetails vesselData={vesselData} />
-        <InvoiceDetails invoiceData={invoiceData} />
-        {contractData && (
-          <ContractDetails contractData={contractData} />
+        {workOrder.inventoryId && (
+          <VesselDetails marinaInventoryId={workOrder.inventoryId} />
+        )}
+        {invoice && <InvoiceDetails invoiceId={invoice.id} />}
+        {workOrder.contractId && (
+          <ContractDetails contractId={workOrder.contractId} />
         )}
       </div>
     </div>

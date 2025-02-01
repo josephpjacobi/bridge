@@ -1,5 +1,21 @@
+import { Contract } from '../Contracts/types';
 import { workOrderItems, workOrders } from '../data';
 import { WorkOrder, WorkOrderItems } from '../WorkOrders/types';
+
+export const getWorkOrderByWorkOrderId = (
+  workOrderId: WorkOrder['id']
+) =>
+  workOrders.filter((workOrder) => {
+    return workOrder.id === workOrderId;
+  });
+
+export const getWorkOrderByContractId = (
+  contractId: Contract['id']
+) => {
+  return workOrders.filter(
+    (workOrder) => workOrder.contractId === contractId
+  );
+};
 
 export const getAllWorkOrdersByMarinaId = (marinaId: number) => {
   return workOrders.filter((workOrder) => {

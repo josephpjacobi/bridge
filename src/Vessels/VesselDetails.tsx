@@ -1,11 +1,15 @@
 import { List, ListItem } from '@mui/material';
 import { Vessel } from './types';
+import { getVesselByInventoryId } from '../api/vessels';
 
 interface VesselDetailsProps {
-  vesselData: Vessel;
+  marinaInventoryId: Vessel['id'];
 }
 
-export const VesselDetails = ({ vesselData }: VesselDetailsProps) => {
+export const VesselDetails = ({
+  marinaInventoryId,
+}: VesselDetailsProps) => {
+  const vesselData = getVesselByInventoryId(marinaInventoryId)[0];
   const { boatName, length, make, model, year } = vesselData;
 
   return (
