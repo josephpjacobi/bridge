@@ -9,6 +9,8 @@ import { Invoices } from './Invoices/Invoices';
 import { ContractView } from './Contracts/ContractView';
 import { WorkOrderView } from './WorkOrders/WorkOrderView';
 import { InvoiceView } from './Invoices/InvoiceView';
+import { HomePage } from './Components/HomePage';
+import { WorkOrders } from './WorkOrders/WorkOrders';
 
 // Implement Create functionality:
 //    Customer
@@ -26,6 +28,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/customers"
           element={<CustomerList marinaId={1} />}
@@ -56,7 +59,7 @@ function App() {
         />
         <Route
           path="/workOrders"
-          element={<Invoices marinaId={1} />}
+          element={<WorkOrders marinaId={1} />}
         />
         <Route
           path="/workOrder"
