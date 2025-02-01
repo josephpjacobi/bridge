@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
 import { CustomerList } from './Customers/CustomerList';
-import { CustomerProfile } from './Customers/CustomerProfile';
 import { contracts, customers, invoices, workOrders } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
@@ -11,6 +10,7 @@ import { WorkOrderView } from './WorkOrders/WorkOrderView';
 import { InvoiceView } from './Invoices/InvoiceView';
 import { HomePage } from './Components/HomePage';
 import { WorkOrders } from './WorkOrders/WorkOrders';
+import { CustomerView } from './Customers/CustomerView';
 
 // Implement Create functionality:
 //    Customer
@@ -36,9 +36,9 @@ function App() {
         <Route
           path="/customer"
           element={
-            <CustomerProfile
+            <CustomerView
               marinaId={1}
-              marinaCustomer={customers[0]}
+              marinaCustomerId={1} // This should come from query params
             />
           }
         />

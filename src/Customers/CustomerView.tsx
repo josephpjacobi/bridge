@@ -1,4 +1,3 @@
-import { CustomerProfileProps } from './types';
 import { CustomerInfoSection } from './CustomInfoSection';
 import { Stack } from '@mui/material';
 import { VesselList } from '../Vessels/VesselList';
@@ -12,6 +11,13 @@ import { WorkOrderList } from '../WorkOrders/WorkOrderList';
 import { getAllWorkOrdersByInventoryId } from '../api/workOrders';
 import { InvoiceList } from '../Invoices/InvoiceList';
 import { getInvoicesByMarinaCustomerId } from '../api/invoices';
+import { MarinaCustomer } from './types';
+import { Marina } from '../Marinas/types';
+
+export interface CustomerProfileProps {
+  marinaCustomerId: MarinaCustomer['id'];
+  marinaId: Marina['id'];
+}
 
 /*
  * CustomerProfile is an overview page for an individual customer. In this component, you will find
@@ -21,18 +27,18 @@ import { getInvoicesByMarinaCustomerId } from '../api/invoices';
  * I think the only prop needed is a marinaCustomer instance. It has data that links to the marina,
  * vessel and owner info
  **/
-export const CustomerProfile = ({
-  marinaCustomer,
+export const CustomerView = ({
+  marinaCustomerId,
   marinaId,
 }: CustomerProfileProps) => {
   const vessels = getVesselsByMarinaCustomerId(
     marinaId,
-    marinaCustomer.id
+    marinaCustomerId
   );
 
   const inventoryIds = getAllInventoryIdsOwnedByCustomer(
     marinaId,
-    marinaCustomer
+    marinaCustomerId
   );
 
   const workOrders = getAllWorkOrdersByInventoryId(
@@ -40,11 +46,11 @@ export const CustomerProfile = ({
     inventoryIds
   );
 
-  const invoices = getInvoicesByMarinaCustomerId(marinaCustomer.id);
+  const invoices = getInvoicesByMarinaCustomerId(marinaCustomerId);
 
   return (
     <Stack>
-      <CustomerInfoSection marinaCustomerId={marinaCustomer.id} />
+      <CustomerInfoSection marinaCustomerId={marinaCustomerId} />
       <VesselList rowData={vessels} />
       <ContractList
         rowData={getContractsByInventoryId(marinaId, inventoryIds)}

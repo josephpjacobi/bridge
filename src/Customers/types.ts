@@ -2,11 +2,6 @@ export interface CustomerListProps {
   marinaId: number;
 }
 
-export interface CustomerProfileProps {
-  marinaCustomer: Customer;
-  marinaId: number; // Marina['id']
-}
-
 export interface CustomerInfoSectionProps {
   marinaCustomerId: number;
 }

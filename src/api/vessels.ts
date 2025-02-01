@@ -1,6 +1,7 @@
 import { Customer } from '../Customers/types';
 import { marinaInventory, vessels } from '../data';
 import { MarinaInventory } from '../MarinaInventory/types';
+import { Marina } from '../Marinas/types';
 import { Vessel } from '../Vessels/types';
 
 // Vessel instance
@@ -60,14 +61,14 @@ export const getAllInventoryIdsByMarinaId = (marinaId: number) =>
     });
 
 export const getAllInventoryIdsOwnedByCustomer = (
-  marinaId: number,
-  marinaCustomer: Customer
+  marinaId: Marina['id'],
+  marinaCustomerId: Customer['id']
 ) =>
   marinaInventory
     .filter(
       (inventoryRecord) =>
         inventoryRecord.marinaId === marinaId &&
-        inventoryRecord.marinaCustomerId === marinaCustomer.id
+        inventoryRecord.marinaCustomerId === marinaCustomerId
     )
     .map((record) => {
       return record.id;
