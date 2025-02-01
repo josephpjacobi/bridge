@@ -4,7 +4,11 @@ import {
   ContractItemType,
 } from './Contracts/types';
 import { Invoice } from './Invoices/types';
-import { WorkOrder } from './WorkOrders/types';
+import {
+  WorkOrder,
+  WorkOrderItems,
+  WorkOrderItemType,
+} from './WorkOrders/types';
 
 export const marinas = [
   {
@@ -239,6 +243,7 @@ export const workOrders: WorkOrder[] = [
     id: 1,
     status: 'Complete',
     marinaId: 1,
+    marinaCustomerId: 1,
     inventoryId: 1,
     contractId: 1,
     updatedAt: '',
@@ -246,7 +251,7 @@ export const workOrders: WorkOrder[] = [
   },
 ];
 
-export const workItems = [
+export const workOrderItems: WorkOrderItems[] = [
   {
     id: 1,
     workOrderId: 1,
@@ -257,7 +262,7 @@ export const workItems = [
   },
 ];
 
-export const workItemType = [
+export const workItemType: WorkOrderItemType[] = [
   {
     id: 1,
     marinaId: 1,

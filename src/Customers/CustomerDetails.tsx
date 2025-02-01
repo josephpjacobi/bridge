@@ -1,4 +1,4 @@
-import { List, ListItem, Stack } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import { Customer } from './types';
 
 interface CustomerDetailsProps {

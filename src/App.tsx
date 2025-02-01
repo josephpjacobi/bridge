@@ -2,17 +2,14 @@ import { Route, Routes } from 'react-router';
 import './App.css';
 import { CustomerList } from './Customers/CustomerList';
 import { CustomerProfile } from './Customers/CustomerProfile';
-import { contracts, customers } from './data';
+import { contracts, customers, workOrders } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
 import { Invoices } from './Invoices/Invoices';
-import { ContractDetails } from './Contracts/ContractDetails';
+import { ContractView } from './Contracts/ContractView';
+import { WorkOrderView } from './WorkOrders/WorkOrderView';
 
-// ADD contract info, contact info, vessel info to Contract details
-
-// IMPLEMENT A work order DETAILS PAGE
-
-// IMPLEMENT AN INVOICE DETAILS PAGE
+// IMPLEMENT a invoice view
 
 // Implement Create functionality:
 //    Customer
@@ -44,15 +41,28 @@ function App() {
           }
         />
         <Route path="/vessels" element={<Vessels marinaId={1} />} />
+        <Route path="/vessel" element={<Vessels marinaId={1} />} />
         <Route
           path="/contracts"
           element={<Contracts marinaId={1} />}
         />
         <Route
           path="/contract"
-          element={<ContractDetails contract={contracts[0]} />}
+          element={<ContractView contract={contracts[0]} />} // This should be contractId
         />
         <Route path="/invoices" element={<Invoices marinaId={1} />} />
+        <Route
+          path="/invoice"
+          element={<Invoices marinaId={1} />} // This should be invoiceId
+        />
+        <Route
+          path="/workOrders"
+          element={<Invoices marinaId={1} />}
+        />
+        <Route
+          path="/workOrder"
+          element={<WorkOrderView workOrder={workOrders[0]} />} // This should be workOrderId
+        />
       </Routes>
     </div>
   );

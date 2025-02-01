@@ -1,44 +1,44 @@
 import { getAllContractItemsByContractId } from '../api/contracts';
 import { getVesselByInventoryId } from '../api/vessels';
-import { contractItemType, invoices, workOrders } from '../data';
-import { Contract, ContractItemType } from './types';
+import { contracts, invoices, workItemType } from '../data';
 import { VesselDetails } from '../Vessels/VesselDetails';
 import { CustomerDetails } from '../Customers/CustomerDetails';
 import { getCustomerByMarinaCustomerId } from '../api/customers';
-import { WorkOrderDetails } from '../WorkOrders/WorkOrderDetails';
 import { InvoiceDetails } from '../Invoices/InvoiceDetails';
+import { WorkOrder, WorkOrderItemType } from './types';
+import { ContractDetails } from '../Contracts/ContractDetails';
 
-interface ContractViewProps {
-  contract: Contract;
+interface WorkOrderViewProps {
+  workOrder: WorkOrder;
 }
 
-export const ContractView = ({ contract }: ContractViewProps) => {
-  const contractItems = getAllContractItemsByContractId(
-    contract.id
+export const WorkOrderView = ({ workOrder }: WorkOrderViewProps) => {
+  const workOrderItems = getAllContractItemsByContractId(
+    workOrder.id
   ).map((item) => {
-    return contractItemType.filter(
+    return workItemType.filter(
       (itemType) => item.itemTypeId === itemType.id
     )[0];
   });
 
   const customerData = getCustomerByMarinaCustomerId(
-    contract.marinaCustomerId
+    workOrder.marinaCustomerId
   )[0];
-  const vesselData = getVesselByInventoryId(contract.inventoryId)[0];
-  const workOrderData = workOrders[0];
+  const vesselData = getVesselByInventoryId(workOrder.inventoryId)[0];
   const invoiceData = invoices[0];
+  const contractData = contracts[0];
 
   return (
     <div>
-      <h1>Contract Details</h1>
+      <h1>Work order details</h1>
       {/* Contract items could either go above or below the customer and vessel info section */}
       {/* I'm actually thinking of 4 small sections in a row: customer info - vessel info - work order info - invoice info
             The bulk of the page will be a list of contract items, with the info above readily available. These sections can link to
             their respective detail page
       */}
-      <h4>Contract status: {contract.status}</h4>
-      <h4>Contract items</h4>
-      {contractItems.map((item: ContractItemType) => {
+      <h4>Work order Status: {workOrder.status}</h4>
+      <h4>Work order items</h4>
+      {workOrderItems.map((item: WorkOrderItemType) => {
         return (
           <div>
             <p>{`${item.title} - ${item.description}`}</p>
@@ -59,8 +59,10 @@ export const ContractView = ({ contract }: ContractViewProps) => {
           customerData={customerData}
         />
         <VesselDetails vesselData={vesselData} />
-        <WorkOrderDetails workOrderData={workOrderData} />
         <InvoiceDetails invoiceData={invoiceData} />
+        {contractData && (
+          <ContractDetails contractData={contractData} />
+        )}
       </div>
     </div>
   );
