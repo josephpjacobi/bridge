@@ -6,6 +6,7 @@ export interface Contract {
   id: number;
   status: ContractStatus;
   marinaId: number;
+  marinaCustomerId: number;
   inventoryId: number;
   deliveryMethod: ContractDeliveryMethod;
   updatedAt: string;

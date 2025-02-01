@@ -24,14 +24,16 @@ export const getCustomersByMarinaId = (marinaId: number) => {
 // Customer - single record
 export const getCustomerByMarinaCustomerId = (
   marinaCustomerId: MarinaCustomer['id']
-): Customer | undefined => {
+): Customer[] => {
   const ownerRecord = marinaCustomers.find(
     (marinaCustomer) => marinaCustomer.id === marinaCustomerId
   );
 
   if (ownerRecord === undefined) {
-    return;
+    return [];
   }
 
-  return customers.find((customer) => customer.id === ownerRecord.id);
+  return customers.filter(
+    (customer) => customer.id === ownerRecord.id
+  );
 };

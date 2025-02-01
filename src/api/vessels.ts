@@ -13,6 +13,20 @@ export const getVesselByVesselId = (
     return vessel.id === vesselId;
   });
 
+export const getVesselByInventoryId = (
+  inventoryId: MarinaInventory['id']
+): Vessel[] => {
+  const inventoryRecord = marinaInventory.find(
+    (inventoryRecord) => inventoryRecord.id === inventoryId
+  );
+
+  if (inventoryRecord === undefined) {
+    return [];
+  }
+
+  return getVesselByVesselId(inventoryRecord.id);
+};
+
 // List of Vessels
 export const getAllVesselsByMarinaId = (marinaId: number) => {
   const inventoryIds = getAllInventoryIdsByMarinaId(marinaId);
