@@ -30,7 +30,7 @@ export interface MarinaCustomer {
   id: number;
   marinaId: number;
   marinaCustomerId: number; // I don't know why I have this
-  vesselId: number;
+  inventoryId: number;
   updatedAt: string;
   createdAt: string;
 }

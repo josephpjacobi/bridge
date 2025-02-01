@@ -3,9 +3,12 @@ import {
   ContractItem,
   ContractItemType,
 } from './Contracts/types';
-import { Invoice, LineItems } from './Invoices/types';
+import { Customer, MarinaCustomer } from './Customers/types';
+import { Invoice, LineItems, LineItemType } from './Invoices/types';
 import { MarinaGroup } from './MarinaGroup/types';
+import { MarinaInventory } from './MarinaInventory/types';
 import { Marina } from './Marinas/types';
+import { Vessel } from './Vessels/types';
 import {
   WorkOrder,
   WorkOrderItems,
@@ -59,34 +62,42 @@ export const marinas: Marina[] = [
   },
 ];
 
-export const marinaCustomers = [
+export const marinaCustomers: MarinaCustomer[] = [
   {
     id: 1,
     marinaId: 1,
-    customerId: 1,
+    marinaCustomerId: 1,
     inventoryId: 1,
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 2,
     marinaId: 1,
-    customerId: 2,
+    marinaCustomerId: 2,
     inventoryId: 2,
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 3,
     marinaId: 1,
-    customerId: 3,
+    marinaCustomerId: 3,
     inventoryId: 3,
+    updatedAt: '',
+    createdAt: '',
   },
   {
     id: 4,
     marinaId: 1,
-    customerId: 4,
+    marinaCustomerId: 4,
     inventoryId: 4,
+    updatedAt: '',
+    createdAt: '',
   },
 ];
 
-export const marinaInventory = [
+export const marinaInventory: MarinaInventory[] = [
   {
     id: 1,
     marinaId: 1,
@@ -121,7 +132,7 @@ export const marinaInventory = [
   },
 ];
 
-export const customers = [
+export const customers: Customer[] = [
   {
     id: 1,
     firstName: 'Joe',
@@ -176,7 +187,7 @@ export const customers = [
   },
 ];
 
-export const vessels = [
+export const vessels: Vessel[] = [
   {
     id: 1,
     year: 2024,
@@ -316,7 +327,7 @@ export const lineItems: LineItems[] = [
   },
 ];
 
-export const lineItemType = [
+export const lineItemType: LineItemType[] = [
   {
     id: 1,
     title: 'Bottom Paint - line item', // here for testing
