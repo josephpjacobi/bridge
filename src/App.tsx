@@ -2,14 +2,13 @@ import { Route, Routes } from 'react-router';
 import './App.css';
 import { CustomerList } from './Customers/CustomerList';
 import { CustomerProfile } from './Customers/CustomerProfile';
-import { contracts, customers, workOrders } from './data';
+import { contracts, customers, invoices, workOrders } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
 import { Invoices } from './Invoices/Invoices';
 import { ContractView } from './Contracts/ContractView';
 import { WorkOrderView } from './WorkOrders/WorkOrderView';
-
-// IMPLEMENT a invoice view
+import { InvoiceView } from './Invoices/InvoiceView';
 
 // Implement Create functionality:
 //    Customer
@@ -53,7 +52,7 @@ function App() {
         <Route path="/invoices" element={<Invoices marinaId={1} />} />
         <Route
           path="/invoice"
-          element={<Invoices marinaId={1} />} // This should be invoiceId
+          element={<InvoiceView invoice={invoices[0]} />} // This should be invoiceId
         />
         <Route
           path="/workOrders"

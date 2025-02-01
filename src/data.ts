@@ -3,7 +3,7 @@ import {
   ContractItem,
   ContractItemType,
 } from './Contracts/types';
-import { Invoice } from './Invoices/types';
+import { Invoice, LineItems } from './Invoices/types';
 import {
   WorkOrder,
   WorkOrderItems,
@@ -279,7 +279,7 @@ export const invoices: Invoice[] = [
     status: 'Not paid',
     marinaId: 1,
     workOrderId: 1,
-    vesselId: 1,
+    inventoryId: 1,
     marinaCustomerId: 1,
     dateSent: '1/1/25',
     dateDue: '6/1/25',
@@ -288,7 +288,7 @@ export const invoices: Invoice[] = [
   },
 ];
 
-export const lineItems = [
+export const lineItems: LineItems[] = [
   {
     id: 1,
     invoiceId: 1,
