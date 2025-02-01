@@ -15,7 +15,8 @@ export const getAllWorkOrderItemsByWorkOrderId = (
   });
 };
 
-export const getAllWorkOrdersByInventoryId = (
+// Handles the case of an owner having more than 1 boat
+export const getAllWorkOrdersByInventoryIds = (
   marinaId: number,
   inventoryIds: number[]
 ) => {

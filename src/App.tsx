@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
 import { CustomerList } from './Customers/CustomerList';
-import { contracts, customers, invoices, workOrders } from './data';
+import { contracts, invoices, workOrders } from './data';
 import { Vessels } from './Vessels/Vessels';
 import { Contracts } from './Contracts/Contracts';
 import { Invoices } from './Invoices/Invoices';
@@ -11,6 +11,9 @@ import { InvoiceView } from './Invoices/InvoiceView';
 import { HomePage } from './Components/HomePage';
 import { WorkOrders } from './WorkOrders/WorkOrders';
 import { CustomerView } from './Customers/CustomerView';
+import { VesselView } from './Vessels/VesselView';
+
+// Add vessel view with customer info and current / past work
 
 // Implement Create functionality:
 //    Customer
@@ -43,7 +46,10 @@ function App() {
           }
         />
         <Route path="/vessels" element={<Vessels marinaId={1} />} />
-        <Route path="/vessel" element={<Vessels marinaId={1} />} />
+        <Route
+          path="/vessel"
+          element={<VesselView inventoryId={1} />} // I hardcoded marinaId in this file
+        />
         <Route
           path="/contracts"
           element={<Contracts marinaId={1} />}

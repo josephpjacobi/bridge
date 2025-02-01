@@ -8,7 +8,7 @@ import {
 } from '../api/vessels';
 import { getContractsByInventoryId } from '../api/contracts';
 import { WorkOrderList } from '../WorkOrders/WorkOrderList';
-import { getAllWorkOrdersByInventoryId } from '../api/workOrders';
+import { getAllWorkOrdersByInventoryIds } from '../api/workOrders';
 import { InvoiceList } from '../Invoices/InvoiceList';
 import { getInvoicesByMarinaCustomerId } from '../api/invoices';
 import { MarinaCustomer } from './types';
@@ -41,7 +41,7 @@ export const CustomerView = ({
     marinaCustomerId
   );
 
-  const workOrders = getAllWorkOrdersByInventoryId(
+  const workOrders = getAllWorkOrdersByInventoryIds(
     marinaId,
     inventoryIds
   );
