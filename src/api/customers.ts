@@ -14,7 +14,7 @@ export const getAllMarinaCustomersByMarinaId = (
 export const getCustomersByMarinaId = (marinaId: number) => {
   const customerIds = marinaCustomers
     .filter((customer) => customer.marinaId === marinaId)
-    .map((marinaCustomer) => marinaCustomer.customerId);
+    .map((marinaCustomer) => marinaCustomer.marinaCustomerId);
 
   return customers.filter((customer) =>
     customerIds.includes(customer.id)
